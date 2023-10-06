@@ -3,15 +3,20 @@ import {THEMAS} from './src/styles/temas';
 {/**Import das rotas */}
 import Rotas from './src/Rotas';
 import { useEffect } from 'react';
-import { API } from './src/servicos/api';
+import API  from './src/servicos/api';
 
 export default function App() {
 
+/** 
+ * Link do JSON para colocar no insomnia:
+ * https://github.com/alura-cursos/voll-api-nodejs/archive/refs/heads/insomnia.zip
+ * 
+ * Link da API para conexão:
+ * https://github.com/alura-cursos/voll-api-nodejs
+ */
 
-  {/**
 
-  ** Teste de comunicação entre a aplicação e a WEB API
-
+/** Testar conexão com a API
   useEffect(() => {
     async function testConexao(){
       const conexao = await API.get('/paciente')
@@ -19,9 +24,7 @@ export default function App() {
     }
     testConexao()
   }, [])
-   
-*/}
-
+ */
 
 
   return (
