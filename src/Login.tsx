@@ -4,8 +4,10 @@ import Logo from './assets/Logo.png'
 import { Titulo } from './component/Titulo';
 import { Botao } from './component/Botao';
 import { EntradaTexto } from './component/EstradaTexto';
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import { fazerLogin } from './servicos/AutSevico';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import jwtDecode from 'jwt-decode';
 
 export default function Login({navigation} : any){
    
@@ -13,15 +15,37 @@ export default function Login({navigation} : any){
     /** Criação das variáveis de email e senha iniciando no estado " " (String Vazia)*/
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
-
+    const [Carregando, setCarregando] = useState(false)
     /**TOAST serve para exibir mensagem na tela */
     const Toast = useToast()
+
+    useEffect(()=>{
+        async function verificarLogin(){
+            const token = await AsyncStorage.getItem('token')
+            if(token){
+                navigation.replace('Tabs')
+            }
+        }
+        verificarLogin()
+    })
+
 
     async function fLogin() {
         const resultado = await fazerLogin(email, senha)
         if (resultado){
-            /**Usar replace */
-            navigation.navigate('Tabs')
+            /**Coletar dados assincrono para manter o usuário logado*/
+            const { token } = resultado
+            AsyncStorage.setItem('token', token)
+
+            /**pegar ID do usuário */
+            const tokenID = jwtDecode(token) as any
+            const pacienteID = tokenID.id
+            AsyncStorage.setItem('pacienteID', pacienteID)
+
+            /**Após logado, envia para a tela Home*/
+            navigation.replace('Tabs')
+            setCarregando(true)
+            console.log('TOKEN DECODIFICADO:', tokenID)
             }
         else{
             /**Configuração do alerta TOAST */
@@ -30,7 +54,14 @@ export default function Login({navigation} : any){
                 description: "E-mail ou senha inválidos",
                 backgroundColor: 'red.500',
             })
+            console.log("O usuário errou o email ou a senha")
         }
+    }
+
+
+    /**apagar o FALSE para pular a tela de login quando o usuário permanecer conectado*/
+    if(Carregando){
+        return null
     }
 
     return(

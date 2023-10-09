@@ -12,6 +12,10 @@ import { cSecoes } from './utils/CadastroEntradaTexto';
 export default function Cadastro(){
     
     const [numSecao, setNumSecao] = useState(0)
+
+    /**Variáveis da tela de cadastro */
+    const [dados, setDados] = useState({} as any)
+
     function avancarSessao(){
         if(numSecao < cSecoes.length -1){
             setNumSecao(numSecao + 1)
@@ -26,6 +30,11 @@ export default function Cadastro(){
         }
     }
 
+    /**função que percorre o map e cria variáveis com as informações da tela de cadastro */
+
+    function atualizarDados(id:string, valor:string){
+        setDados({...dados, [id]: valor})
+    }
 
     {/**Início da página */}
     return(        

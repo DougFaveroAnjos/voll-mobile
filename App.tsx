@@ -13,6 +13,16 @@ export default function App() {
  * 
  * Link da API para conexão:
  * https://github.com/alura-cursos/voll-api-nodejs
+ * 
+ * Link da biblioteca Async Storage (Manter usuário logado):
+ * https://www.npmjs.com/package/@react-native-async-storage/async-storage
+ * 
+ * Link da biblioteca JWT-Decode (Biblioteca de consultas):
+ * https://www.npmjs.com/package/jwt-decode
+ * 
+ * Site para verificar Tokens:
+ * https://jwt.io
+ * 
  */
 
 
