@@ -12,7 +12,6 @@ import { cSecoes } from './utils/CadastroEntradaTexto';
 export default function Cadastro(){
     
     const [numSecao, setNumSecao] = useState(0)
-
     /**Variáveis da tela de cadastro */
     const [dados, setDados] = useState({} as any)
 
@@ -21,7 +20,7 @@ export default function Cadastro(){
             setNumSecao(numSecao + 1)
         }
         else{
-            alert('Não é possível avançar no momento, aguarde e tente novamente mais tarde...')
+            console.log(dados)
         }
     }
     function voltarSessao(){
@@ -31,8 +30,8 @@ export default function Cadastro(){
     }
 
     /**função que percorre o map e cria variáveis com as informações da tela de cadastro */
-
     function atualizarDados(id:string, valor:string){
+        /**Copia tudo que está dentro de dados e armazena tudo dentro de valor por id */
         setDados({...dados, [id]: valor})
     }
 
@@ -46,8 +45,14 @@ export default function Cadastro(){
             <Box>
                 {
                    numSecao < 2 && cSecoes[numSecao].entradaTexto.map(entrada =>{
-                        return <EntradaTexto children={entrada.children} placeholder={entrada.placeholder} 
-                        key={entrada.id} secureTextEntry={entrada.secureTextEntry}/>
+                        return <EntradaTexto 
+                        children={entrada.children} 
+                        placeholder={entrada.placeholder} 
+                        key={entrada.id} 
+                        secureTextEntry={entrada.secureTextEntry}
+                        // vvvvv Recolhe as informações da tela de cadastro para colocar em variáveis
+                        value={dados[entrada.children]}
+                        onChangeText={(text)=> atualizarDados(entrada.name, text)}/>
                     })
                 }
             </Box>

@@ -37,7 +37,7 @@ export function Cards({titulo, prof, data, agendado, atendido, ...rest}: CardsPr
                         <Text color={"gray.400"} {...rest}>{data}</Text>
                 </VStack>
             </HStack>
-            <Botao >{atendido ? 'Agendar Consulta' : 'Cancelar'}</Botao>
+            <Botao>{atendido ? 'Agendar Consulta' : 'Cancelar'}</Botao>
 
         </Box>
     )

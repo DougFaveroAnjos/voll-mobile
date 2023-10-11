@@ -7,23 +7,33 @@ const cSecoes = [
                 id:1,
                 children: 'Nome',
                 placeholder: 'Digite seu nome completo',
+                name: 'nome'
             },
             {
                 id:2,
                 children: 'Email',
                 placeholder: 'Digite seu endereço de E-mail',
+                name: 'email'
             },
             {
                 id:3,
                 children: 'Senha',
                 placeholder: 'Digite sua nova senha',
-                secureTextEntry: true
+                secureTextEntry: true,
+                name: 'senha'
             },
             {
                 id:4,
                 children: 'Confirme sua senha',
                 placeholder: 'Confirme sua senha',
-                secureTextEntry: true
+                secureTextEntry: true,
+                name: 'confirmaSenha'
+            },
+            {
+                id:5,
+                children: 'CPF',
+                placeholder: 'Insira seu CPF',
+                name: 'CPF'
             }]
         
     },
@@ -35,26 +45,37 @@ const cSecoes = [
                 id:1,
                 children: 'CEP',
                 placeholder: 'Insira seu CEP',
+                name: 'cep'
             },
             {
                 id:2,
                 children: 'Endereço',
-                placeholder: 'Insira seu endereço',
+                placeholder: 'Insira o nome da sua Rua',
+                name: 'rua'
             },
             {
                 id:3,
                 children: 'Número',
                 placeholder: 'Insira o número da sua residência',
+                name: 'numero'
             },
             {
                 id:4,
                 children: 'Complemento',
                 placeholder: 'Ex: Bloco 3 Ap 307',
+                name: 'complemento'
             },
             {
                 id:5,
+                children: 'Estado',
+                placeholder: 'Ex: PR',
+                name: 'estado'
+            },
+            {
+                id:6,
                 children: 'Telefone',
-                placeholder: '(00) 0 0000-0000'
+                placeholder: '(00) 0 0000-0000',
+                name: 'telefone'
             }
         ]
     },

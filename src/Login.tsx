@@ -20,6 +20,7 @@ export default function Login({navigation} : any){
     const Toast = useToast()
 
     useEffect(()=>{
+        //Para remover o token usar AsyncStorage.removeItem('token')
         async function verificarLogin(){
             const token = await AsyncStorage.getItem('token')
             if(token){
